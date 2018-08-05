@@ -1,0 +1,190 @@
+ #54/56 = 4.8/5
+
+#1
+a = read.table(file ="KST1.txt", header = TRUE)
+View(a)
+cor.test(a$length,a$depth)
+#p < 2.2e-16, therefore reject NULL hypothesis
+
+
+#2
+chisq.test(c(28,12))
+
+b=read.table(file="KST2.txt" , header=TRUE, row.names=1)
+View(b)
+chisq.test(b)
+#p = 0.01141, therefore reject NULL hypothesis
+
+
+#3
+c = read.table(file="KST3.txt", header = TRUE)
+View(c)
+t.test(c$x~c$group)
+#p < 2.2e-16, therefore reject NULL hypothesis
+
+
+#4
+d=read.table(file="KST4.txt", header = TRUE)
+View(d)
+fit=lm(d$weight~d$bill + d$wing + d$tarsus + d$tail)
+summary(fit)
+fit2=lm(d$weight~d$wing)
+summary(fit2)
+plot(d$wing,d$weight)
+#p < 2.2e-16, therefore reject NULL hypothesis
+
+
+#5
+e= read.table(file="KST5.txt", header = TRUE)
+View(e)
+cor.test(e$salinity,e$number, method=c("spearman"))
+# p = 0.82, therefore FAIL to reject NULL hypothesis
+
+
+#6
+f=read.table(file="KST6.txt" , header=TRUE, row.names=1)
+View(f)
+chisq.test(f)
+# p = 0.28, therefore FAIL to reject NULL hypothesis
+
+
+#7
+g=read.table(file="KST7.txt" , header=TRUE)
+View(g)
+anovag=aov(g$length~g$variety)
+summary(anovag)
+# p = 0.103, therefore FAIL to reject NULL hypothesis
+
+
+#8
+h=read.table(file="KST8.txt", header=TRUE)
+View(h)
+wilcox.test(h$density~h$location)
+#p = 8.341e-14, therefore reject NULL hypothesis
+
+
+#9
+i=read.table(file="KST9.txt", header=TRUE, row.names=1)
+View(i)
+chisq.test(i)
+#p = 0.00217, therefore reject NULL hypothesis
+
+
+#10
+j=read.table(file="KST10.txt", header=TRUE)
+View(j)
+t.test(j$duration~j$location)
+#p = 1.223e-06, therefore reject NULL hypothesis
+
+
+#11
+k=read.table(file="KST11.txt", header=TRUE)
+View(k)
+kruskal.test(k$cover~k$type)
+#p < 2.2e-16, therefore reject NULL hypothesis
+
+
+#12
+l= read.table(file="KST12.txt" , header=TRUE)
+View(l)
+fisher.test(l)
+#p = 0.0001954, therefore reject NULL hypothesis
+
+#Yates teo sample chi square test -1
+
+
+#13
+m=read.table(file="KST13.txt", header = TRUE)
+View(m)
+fit2=lm(m$density~m$period)
+summary(fit2)
+#p < 2.2e-16, therefore reject NULL hypothesis
+
+
+#14
+n=read.table(file="KST14.txt", header=TRUE)
+View(n)
+t.test(n$pH~n$mangrove)
+#p = 0.571, therefore FAIL to reject NULL hypothesis
+
+
+#15
+o=read.table(file="KST15.txt", header=TRUE)
+View(o)
+t.test(o$density~o$status, paired=TRUE)
+#p = 1.927e-07, therefore reject NULL hypothesis
+
+
+#16
+p=read.table(file="KST16.txt", header = TRUE)
+View(p)
+fit2=lm(p$length~p$fecundity)
+summary(fit2)
+#p < 2.2e-16, therefore reject NULL hypothesis
+
+
+#17
+q= read.table(file ="KST17.txt", header = TRUE)
+View(q)
+cor.test(q$flowers,q$worms)
+#p < 2.2e-16, therefore reject NULL hypothesis
+
+#Should be Spearman rank correlation -1
+
+
+#18
+r=read.table(file="KST18.txt" , header=TRUE)
+View(r)
+wilcox.test(r$year1,r$year2, paired=TRUE)
+#p = 0.04914, therefore reject NULL hypothesis, just barely
+
+
+#19
+s=read.table(file="KST19.txt", header=TRUE)
+View(s)
+kruskal.test(s$number~s$species)
+#p = 0.1102, therefore FAIL to reject NULL hypothesis
+
+
+#20
+t = read.table(file ="KST20.txt", header = TRUE)
+View(t)
+cor.test(t$height,t$salinity)
+#p = 0.1717, therefore FAIL to reject NULL hypothesis
+
+
+#21
+u=read.table(file="KST21.txt", header=TRUE, row.names=1)
+View(u)
+chisq.test(u)
+#p = 4.89e-14, therefore reject NULL hypothesis
+
+
+#22
+v=read.table(file="KST22.txt" , header=TRUE)
+View(v)
+anovag=aov(v$number~v$nest)
+summary(anovag)
+# p = 0.0514, therefore FAIL to reject NULL hypothesis, just barely
+
+
+#23
+w=read.table(file="KST23.txt", header = TRUE)
+View(w)
+fit2=lm(w$Area~w$Number)
+summary(fit2)
+#p = 0.48352, therefore FAIL to reject NULL hypothesis
+
+
+#24
+x= read.table(file="KST24.txt" , header=TRUE)
+View(x)
+fisher.test(x)
+#p = 0.05668, therefore FAIL to reject NULL hypothesis, just barely
+
+
+#25
+y= read.table(file="KST25.txt", header = TRUE)
+View(y)
+cor.test(y$number,y$width, method=c("spearman"))
+#p < 2.2e-16, therefore reject NULL hypothesis

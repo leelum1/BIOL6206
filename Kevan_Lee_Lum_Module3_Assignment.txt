@@ -1,0 +1,86 @@
+#2a                                   10/12 = 4.2/5
+a = read.table(file ="KST1.txt", header = TRUE)
+View(a)
+cor.test(a$length,a$depth)
+#p < 2.2e-16, therefore reject NULL hypothesis
+#correlation found to be 0.9872804
+pwr.r.test(n = 125, r = 0.9872804, sig.level = 0.05, power = )
+#the power of this test is 1
+pwr.r.test(n = , r = 0.1, sig.level = 0.05, power = 0.8)
+#782 samples would have to be collected for correlation of 0.1 and power of 0.8
+
+
+#2b
+chisq.test(c(28,12))
+
+b=read.table(file="KST2.txt" , header=TRUE, row.names=1)
+View(b)
+chisq.test(b)
+#p = 0.01141, therefore reject NULL hypothesis
+#degrees of freedom equal (number of columns minus one) x (number of rows minus one)
+pwr.chisq.test(w =, N = 40, df = 0, sig.level = 0.05, power = 0.8)
+#w is 0.2836775, which approximately represents a medium effect size
+
+
+#df should be 1 -1
+
+
+#2c
+c = read.table(file="KST3.txt", header = TRUE)
+View(c)
+t.test(c$x~c$group)
+#p < 2.2e-16, therefore reject NULL hypothesis
+pwr.2p2n.test(h = , n1 = 38, n2 = 82 ,sig.level = 0.05, power = 0.4)
+#h is 0.334847, which approximately represents a small effect size
+
+
+#2d
+d=read.table(file="KST4.txt", header = TRUE)
+View(d)
+fit=lm(d$weight~d$bill + d$wing + d$tarsus + d$tail)
+summary(fit)
+fit2=lm(d$weight~d$wing)
+summary(fit2)
+plot(d$wing,d$weight)
+#p < 2.2e-16, therefore reject NULL hypothesis
+#The effect size is calculated by (R^2/(1-R^2))
+#u is the number of regressors = 4, assuming the intercept is dropped
+#v is the denominator of the d.o.f. = n - u - 1
+#For an R-squared of 0.4
+pwr.f2.test(u = 4, v = , f2 = 0.4/(1-0.4), sig.level = 0.05, power = 0.8)
+#v = 18.17654, which can be rounded up to 19
+#the minimum number of samples will be 24
+
+#For an R-squared of 0.1
+pwr.f2.test(u = 4, v = , f2 = 0.1/(1-0.1), sig.level = 0.05, power = 0.8)
+#v = 107.2643, which can be rounded up to 108
+#the minimum number of samples will be 113
+
+
+#3
+#For the three grouops of rock sizes, and assuming a normal distribution and variance, a one-way ANOVA test can be used
+pwr.anova.test(k = 3, n = , f = 0.2, sig.level = 0.05, power = 0.8)
+#The number of samples needed is 81.29603, which can be rounded up to 82
+
+#82 for 1 group. Therefore sample size is 246 -1
+#4
+pwr.r.test(n = 60, r = , sig.level = 0.05, power = 0.8)
+#correlation r = 0.3525707. What's the rules for significant figures in this course?
+
+
+#5
+#the student's t-test is needed to compare the two samples
+#for t-tests, the effect size is calculated as the difference of the two means divided by the common error variance
+#the common error variance is the square root of the average of the two standard deviations
+#the common error variance = sqrt((4^2 + 5^2)/2) = 4.528.
+pwr.t.test(n = 20, d = 10/4.528, power = , sig.level= 0.05, type = c("two.sample"))
+#the power is 0.9999993
+#Since the power is > 0.8, the number of samples is sufficient
+
+
+#6
+pwr.r.test(n = 40, r = 0.3 , sig.level = 0.05, power = )
+#power is 0.4772542, which is less than the benchmark 0.8, therefore the sample size was not sufficient
+#Was the sample size sufficient?
+pwr.r.test(n = , r = 0.3 , sig.level = 0.05, power = 0.8)
+#n = 84.07364 which can be rounded up to 85 samples to reach the benchmark 0.8 power
